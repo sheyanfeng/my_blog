@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block title %}登出 - cz小风子的个人网站的个人网站{% endblock %}
+
+{% block content %}
+    <br/>
+    <div style="text-align: center">
+        <br/>
+        {% if user.socialaccount_set.all.0.get_avatar_url %}
+            <img src="{{ user.socialaccount_set.all.0.get_avatar_url }}"
+                 style="max-height: 60px; border-radius: 20%">
+        {% endif %}
+        <br>
+        <br>
+        <h5>{% trans '确定要退出吗?' %}</h5>
+        <br/>
+        <form method="post" action="{% url 'account_logout' %}">
+            {% csrf_token %}
+            {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+            {% endif %}
+            <button type="submit" class="btn btn-danger">{% trans '退出登录' %}</button>
+        </form>
+    </div>
+    <br>
+    <br>
+{% endblock %}

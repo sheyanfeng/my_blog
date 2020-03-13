@@ -1,0 +1,7 @@
+{% load account %}{% user_display user as user_display %}{% load i18n %}{% autoescape off %}{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}来自 小风子 的问好！
+
+这是一封验证邮件，用户 {{ user_display }} 正尝试用这个邮箱注册账户。
+
+验证邮箱请点击此链接： {{ activate_url }}
+{% endblocktrans %}{% endautoescape %}
+{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}cz小风子的个人网站（{{ site_name }}） 感谢您的注册！{% endblocktrans %}
